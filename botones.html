@@ -6,14 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
     </head>
-
+    <body>
+        <h1><img src="logoTec.jpeg" width="100" height="100"></h1>
+    </body>
     <body style='font-family: Century gothic; width: 800;'>
         <center>
         <div style='box-shadow: 0px 0px 20px 8px rgba(0,0,0,0.22); padding: 20px; width: 300px; display: inline-block; margin: 30px;'> 
-            <h1>Actividad 6</h1>
-            <h3>CAPTURANDO DATOS</h3>
+            <h1>Reto IOT</h1>
+            <h3>Menu</h3>
 
-            <form action="onOf.php" method="POST" target="ventana">
+            <form action="recibe.php" method="POST" target="ventana">
 
             <input style='background-color:blue;  color:white; border-radius: 10px; border-color: blue;' 
                 type='submit' name='RUN' value='RUN'>
@@ -22,19 +24,24 @@
                 type='submit' name='STOP' value='STOP'>
 
             </form>
-            <iframe name="ventana" src="onOF.php"></iframe>
+            <iframe name="ventana" src="recibe.php"></iframe>
         </div>
-    </center>
+        </center>
+        <div>
+            <button style='background-color:green;  color:white; border-radius: 10px; border-color: green;' 
+            type='button' onClick=location.href='index.html'><h7>Home</h7>
+        </div>
     </body>
+
 
 
 
     <footer>
         <hr>
-        Actividad 6 laboratorio IOT
+        Reto IOT
         <br>
         Sergio Gonzalez A01745446
         <br>
-        Miguel Juarez A0
+        Miguel Juarez A0A01753318
     </footer>
 </html>
