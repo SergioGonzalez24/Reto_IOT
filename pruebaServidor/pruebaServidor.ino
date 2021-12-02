@@ -1,20 +1,18 @@
 #include "wifiSetup.h"
 #include "sensores.h"
-#include <WiFiClient.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266HTTPClient.h>
+#include "Solicitudes.h"
+
 
 //llenar con url de base de datos local
-String ip="10.16.9.195";
-String url="http://"+ip+"/actividad6/recibe.php";
+String ip="192.168.3.42";
+String url="http://"+ip+"/pruebaReto/recibe.php";
 
 
-String id="tarjeta1";
+String id="3";
 int valorSensor=0;
-int ledEstado=0;
+String SensorId="";
+String SensorNombre="";
 
-WiFiClient wifiClient;
-HTTPClient http;
 
 void setup() {
 
@@ -28,72 +26,35 @@ void setup() {
 
 void loop() {
 
-  http.begin(wifiClient,url);
-  http.addHeader("Content-Type","application/x-www-form-urlencoded");
-  
-  int led = random(0,2);
-  //valorSensor = random(0,60);
-  digitalWrite(LED_BUILTIN, led);
-
-  //Se invierten los valores para encender el led del NODE MCU ESP8266
-  if(led==0) {
-    ledEstado=1; 
-  } else {
-    ledEstado=0;
-  }
-
 //CODIGO SENSORES
 
 
-/*¿Que sensor se desea usar?
-*res = 1 --> para utilizar fotoresistencia
-*res = 2 --> para utilizar el sensor de humedad
-*/
-int res=1;
+//SENSOR CO2
 
-if(res==1) {
-  valorSensor=valFotores();
-  Serial.println("\n");
-  Serial.println("******************************");
-  Serial.println("valor fotoresistencia:\t");
-  Serial.println(valorSensor);
-  Serial.println("******************************");
-  Serial.println("\n");
-}
+SensorId="123";
+SensorNombre="CO2";
 
-else if(res==2) {
-  valorSensor=valHumendad();
-  Serial.println("\n");
-  Serial.println("******************************");
-  Serial.println("valor humedad:\t");
-  Serial.println(valorSensor);
-  Serial.println("******************************");
-  Serial.println("\n");
+valorSensor=valCo2();
+solicitud(id,SensorId,SensorNombre,valorSensor,url);
 
-}
- 
-  
 
-  String postData="id="+id+"&valorSensor="+String(valorSensor)+"&ledEstado="+String(ledEstado);
-  int httpCode=http.POST(postData);
-  
+//SENSOR HUMEDAD
 
-  String respuesta=http.getString();
-  Serial.println("\n");
-  Serial.println("\n");
-  Serial.println("******************************");
-  Serial.println("url:\t");
-  Serial.println(url);
-  Serial.println("******************************");
-  Serial.println("data:\t");
-  Serial.println(postData);
-  Serial.println("******************************");
-  Serial.println("Info:\t");
-  Serial.println(httpCode);
-  Serial.println(respuesta);
-  Serial.println("******************************");
-  http.end();
-  delay(5000);  
+SensorId="456";
+SensorNombre="HUMEDAD";
+
+valorSensor=valHumendad();
+solicitud(id,SensorId,SensorNombre,valorSensor,url);
+
+//Sensor Temperatura
+
+SensorId="456";
+SensorNombre="TEMPERATURA";
+
+valorSensor=valTemperatura();
+solicitud(id,SensorId,SensorNombre,valorSensor,url);
+
+delay(5000);  
  
   
 }

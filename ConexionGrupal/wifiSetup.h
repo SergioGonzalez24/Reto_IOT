@@ -2,8 +2,8 @@
 
 void wifiSetup() {
   
-  const char* ssid     = "LaRataPelona";
-  const char* password = "ibbNfwa9Etppt";
+  const char* ssid     = "Tec-IoT";
+  const char* password = "spotless.magnetic.bridge";
   byte cont = 0;
   byte max_intentos = 50;
 

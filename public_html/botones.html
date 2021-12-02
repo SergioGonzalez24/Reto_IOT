@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Datos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1><img src="logoTec.jpeg" width="100" height="100"></h1>
+    </body>
+
+    <body style='font-family: Century gothic; width: 800;'>
+        <center>
+        <div style='box-shadow: 0px 0px 20px 8px rgba(0,0,0,0.22); padding: 20px; width: 300px; display: inline-block; margin: 30px;'> 
+            <h1>Captura de Datos</h1>
+            <h3></h3>
+
+            <form action="dtest.php" method="POST" >
+
+
+                <label for = "s_nombre">Nombre de Sensor:</label>
+                <select name = "s_nombre">
+                    <option value = "">---</option>
+                    <option value = "CO2">CO2</option>
+                    <option value = "HUMEDAD">HUMEDAD</option>
+                    <option value = "TEMPERATURA">TEMPERATURA</option>
+                </select><br><br>
+
+                <label for = "d_id">ID de la unidad:</label>
+                <input type = "text" id = "d_id" name = "d_id"><br><br>
+
+
+
+                <input style='background-color:#ffc000;  color:white; border-radius: 10px; border-color:#ffc000;' 
+                type='submit' name='DATOS' value='DATOS'>
+            </form>
+            
+            <center>
+            <h1>Live DATA</h1>
+            <br>
+            <iframe name="ventana" src="load.php" title="LiveData" height="400" width="300"></iframe>
+            </center>  
+            
+        </div>
+        </center>
+        
+ 
+
+        <div>
+            <br>
+            <button style='background-color:green;  color:white; border-radius: 10px; border-color: green;' 
+            type='button' onClick=location.href='index.html'><h5>Home</h5>
+        </div>
+
+    </body>
+
+
+    <footer>
+        <hr>
+        Aplicación Reto IOT
+        <br>
+        Sergio Gonzalez A01745446
+        <br>
+        Miguel Juarez A01753318
+    </footer>
+
+</html>
